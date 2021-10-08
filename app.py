@@ -2,14 +2,16 @@
 from urllib.request import urlopen as OPEN
 from urllib.parse import urlencode as ENCODE
 from xml.etree import ElementTree as XML
+import sys
 
 # The API request
 api_url = 'http://maps.googleapis.com/maps/api/geocode/xml?&key=AIzaSyD46BuL7Eb65FsC-6bMXNEf0ScMeKIvT5U'
 
 # ask for user input
 address = input('Enter address: ')
-if len(address) < 1:
-    address = 'Warsaw, Poland'
+if len(address) < 5:
+    print("Sorry, address too short")
+    sys.exit()
 
 # putting the parts together in UTF-8 format
 url = api_url + ENCODE({'address': address})
